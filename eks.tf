@@ -11,7 +11,7 @@ vpc_id = module.vpc.vpc_id
     workers_group_defaults = {
         root_volume_type = "gp2"
     }
-workers_group = [
+  worker_groups = [
         {
             name = "Worker-Group-1"
             instance_type = "t2.micro"
@@ -24,7 +24,7 @@ workers_group = [
             asg_desired_capacity = 1
             additional_security_group_ids = [aws_security_group.worker_group_mgmt_two.id]
         },
-    ]
+  ]
 }
 data "aws_eks_cluster" "cluster" {
     name = module.eks.cluster_id
